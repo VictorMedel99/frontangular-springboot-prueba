@@ -10,14 +10,8 @@ export class CalculadoraApiService {
   constructor() { }
 
   sumar(numeros:numeros){
-    axios.post(this.api_url_base+'suma',numeros)
-      .then(function (response) {
-        console.log(response.data);
-        let resultado=response.data;
-        return response;
-      })
-      .catch(function (error) {
-        console.log(error);
-      })
+    return axios.post(this.api_url_base+'suma',numeros)
   }
+
+   API = axios.create({baseURL:this.api_url_base})
 }

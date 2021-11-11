@@ -8,20 +8,26 @@ import {numeros} from "../../interfaces/numeros";
   styleUrls: ['./calculadora.component.css']
 })
 export class CalculadoraComponent implements OnInit {
-  num1="5";
-  num2="6";
+  num1=0;
+  num2=0;
 
   constructor(private calculadoraServicio: CalculadoraApiService) { }
 
   ngOnInit(): void {
   }
 
-  sumar(){
-    let numeros:numeros={
-      num1: this.num2,
+  async sumar() {
+    let numeros: numeros = {
+      num1: this.num1,
       num2: this.num2
     }
-    let resultado=this.calculadoraServicio.sumar(numeros);
-    console.log("el resultado es "+resultado);
+    this.calculadoraServicio.sumar(numeros)
+      .then( (response) => {
+      alert('Resultado: '+response.data.result)
+    })
+      .catch( (error) => {
+        console.log(error);
+      })
+
   }
 }

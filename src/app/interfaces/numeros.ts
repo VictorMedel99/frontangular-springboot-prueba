@@ -1,4 +1,4 @@
 export interface numeros{
-  num1:string,
-  num2:string
+  num1:number,
+  num2:number
 }
